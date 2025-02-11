@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Challenge for Kids!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <img src="logo.png" width="400px" height="150px">
+        <h1>TYPING CHALLENGE - SEASON 3</h1>
+        <p class="sentence" id="sentence">Type this sentence:</p>
+        <textarea id="input-box" class="input-box" placeholder="Type here..."></textarea>
+        <button id="submit-btn" class="submit-btn">Submit</button>
+        <div class="result" id="result"></div>
+        <div class="finish-message" id="finish-message" style="display: none;">Challenge selesai! Selamat, kamu telah menyelesaikan semua kalimat.</div>
+    </div>
+
+    <script>
+        const sentences = [
+            "Learning to type is fun!",
+            "Practice makes perfect.",
+            "Stay focused and keep typing.",
+            "I enjoy playing typing games.",
+            "Coding is an exciting skill!",
+            "Hello World!",
+            "Practice makes perfect in programming.",
+            "Learning to code is like solving puzzles.",
+            "Errors help us learn.",
+            "Keep coding every day!"
+        ];
+
+        const sentenceDisplay = document.getElementById('sentence');
+        const inputBox = document.getElementById('input-box');
+        const submitBtn = document.getElementById('submit-btn');
+        const result = document.getElementById('result');
+        const finishMessage = document.getElementById('finish-message');
+
+        let currentSentence = "";
+        let completedSentences = 0;
+
+        function setRandomSentence() {
+            if (completedSentences < sentences.length) {
+                currentSentence = sentences[completedSentences];
+                sentenceDisplay.textContent = "Type this sentence: " + currentSentence;
+                inputBox.value = ''; // Clear input box
+                result.textContent = ''; // Clear result
+            } else {
+                finishMessage.style.display = 'block'; // Show the finish message
+                sentenceDisplay.style.display = 'none';
+                inputBox.style.display = 'none';
+                submitBtn.style.display = 'none';
+            }
+        }
+
+        submitBtn.addEventListener('click', () => {
+            const userText = inputBox.value.trim();
+            if (userText === currentSentence) {
+                result.textContent = "Correct! Well done!";
+                result.classList.add('correct');
+                result.classList.remove('incorrect');
+                completedSentences += 1; // Move to next sentence
+                setTimeout(setRandomSentence, 2000); // Set new sentence after 2 seconds
+            } else {
+                result.textContent = "Try again! Make sure it matches exactly.";
+                result.classList.add('incorrect');
+                result.classList.remove('correct');
+            }
+        });
+
+        // Load the first sentence when the page loads
+        setRandomSentence();
+    </script>
+</body>
+</html>
