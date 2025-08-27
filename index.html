@@ -19,18 +19,18 @@
     </div>
 
     <script>
-        const sentences = [
-        "script.Parent.CFrame = script.Parent.CFrame", 
-	    "local function disappear() platform.CanCollide = false",
-            "while true do task.wait(5) disappear() task.wait(5) appear() end",
-            "script.Parent.Touched:Connect(function(hit)",
-            "if hit and hit.Parent and hit.Parent:FindFirstChild("Humanoid")",
-            "then hit.Parent.Humanoid.Health = 0 end",
-            "for i = 1,25 do part.CFrame = script.Parent.CFrame*CFrame.new(0,0,-0.5)",
-            "script.Parent.CFrame = script.Parent.CFrame",
-            "*CFrame.new(0,0,0)*CFrame.fromEulerAnglesXYZ",
-            "then hit.Parent:BreakJoints() end"
-        ];
+       const sentences = [
+    "script.Parent.CFrame = script.Parent.CFrame",
+    "local function disappear() platform.CanCollide = false",
+    "while true do task.wait(5) disappear() task.wait(5) appear() end",
+    "script.Parent.Touched:Connect(function(hit)",
+    "if hit and hit.Parent and hit.Parent:FindFirstChild('Humanoid')",
+    "then hit.Parent.Humanoid.Health = 0 end",
+    "for i = 1,25 do part.CFrame = script.Parent.CFrame*CFrame.new(0,0,-0.5)",
+    "script.Parent.CFrame = script.Parent.CFrame * CFrame.new(0,0,0) * CFrame.fromEulerAnglesXYZ",
+    "then hit.Parent:BreakJoints() end"
+];
+
 
         const sentenceDisplay = document.getElementById('sentence');
         const inputBox = document.getElementById('input-box');
@@ -75,4 +75,5 @@
     </script>
 </body>
 </html>
+
 
